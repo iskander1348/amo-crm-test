@@ -1,0 +1,66 @@
+
+.column{
+    height: fit-content;
+    border: 1px solid white;
+    background-color: #f5f5dce9;
+}
+
+.warning{
+    color: grey;
+    font-style: italic;
+}
+
+.searcharea{
+    margin: 10px;
+    padding: 20px;
+    position: fixed;
+    top: 20px;
+    right: 40px;
+    background-color: #eee;
+    border-radius: 4px;
+}
+
+.search{
+    right: 10px;
+}
+
+.row{
+    margin: 10px;
+    padding: 10px;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.contact_selector{
+    display: none;
+}
+
+.contact_count{
+    font-style: oblique;
+    cursor:pointer;
+    color:blue;
+    text-decoration:underline;
+}
+
+.leads{
+    margin: auto;
+    /* background-color: beige; */
+    /* border: 1px solid white; */
+    border-radius: 4px;
+} 
+
+.title{
+    font-size: larger;
+    border-bottom: 1px solid black!important;
+    background-color: #d3d3be;
+}
+
+.subtable{
+    background-color: rgba(128, 128, 128, 0.314);
+    border-radius: 4px;
+}
+
+.subtable_title{
+    margin: 5px;
+    font-style: italic;
+}

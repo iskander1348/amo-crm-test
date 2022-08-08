@@ -1,0 +1,114 @@
+<div class="searcharea">
+  Поиск:
+  <input placeholder="Писать сюда" [(ngModel)]="searchString" class="search" (ngModelChange)="searchLeads()">
+  <div class="warning" *ngIf="searchString.length > 0 && searchString.length < 3">
+    Поиск работает от 3 символов
+  </div>
+</div>
+
+<!-- <pre>
+  {{leads | json}}
+</pre> -->
+<table class="leads">
+  <thead class="title">
+    <tr>
+      <td class="row">
+        Название
+      </td>
+      <td class="row">
+        Воронка
+      </td>
+      <td class="row">
+        Статус
+      </td>
+      <td class="row">
+        Ответственный
+      </td>
+      <td class="row">
+        Дата создания
+      </td>
+      <td class="row">
+        Бюджет
+      </td>
+      <td>
+        Связанные контакты
+      </td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let lead of leads" class="column">
+        <td class="row">   
+                  
+            {{lead.name}}
+          
+                   
+        </td>
+        <td class="row">
+          {{showPipelineName(lead)}}
+        </td>
+        <td class="row" [bgColor]="showStatusNameAndColor(lead).color">
+          {{showStatusNameAndColor(lead).name}}
+        </td>
+        <td class="row">
+          {{showUserName(lead)}}
+        </td>
+        <td class="row">
+          {{showCreatedDate(lead) | date}}
+        </td>
+        <td class="row">
+          {{lead.price}} ₽
+        </td>
+        <td>
+          <label class="contact_count">  
+            <span *ngIf="lead._embedded.contacts && lead._embedded.contacts.length > 0">
+              {{lead._embedded.contacts.length}} 
+            </span>                     
+            <input (change)="isShowContacts" #isShowContacts type="checkbox" class="contact_selector">   
+          </label> 
+          <table *ngIf="isShowContacts.checked" class="subtable" border="1">
+            <thead>
+              <tr  class="subtable_title">
+                <td class="row">
+                  Имя
+                </td>
+                <td class="row">
+                  Телефон
+                </td>
+                <td class="row">
+                  Email
+                </td>
+              </tr>
+              
+            </thead>
+            <tr *ngFor="let contact of showAssociatedContacts(lead)">
+              <td class="row">
+                {{contact.name}}
+              </td>
+              <td class="row">
+                <span *ngFor="let phone of getContactPhones(contact)">
+                <a  href="callto:{{phone}}" class="phone">
+                  {{phone}}
+                </a><br>
+                </span>
+              </td>
+              <td class="row">
+                <span *ngFor="let email of getContactEmails(contact)">
+                  <a  href="mailto:{{email}}" class="email">
+                    {{email}}
+                  </a>
+                  <br>
+                </span> 
+              </td>
+                         
+  
+               
+            </tr>
+          </table>
+        </td>
+        
+        
+        
+        
+    </tr>
+  </tbody>
+</table>
